@@ -32,7 +32,6 @@ services:
       command: npm start
       networks:
         - default
-    frontend:
 networks:
   default:
     driver: bridge
