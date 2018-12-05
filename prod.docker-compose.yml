@@ -13,12 +13,9 @@ services:
     nginx:
       build:
         context: ./nginx
-        args:
-          - 'php-fpm'
-          - '9000'
       restart: always
       volumes:
-        - ./frontend/dist:/var/www/app
+        - ./frontend/dist:/var/www
         - ./logs/nginx/:/var/log/nginx
       ports:
         - "80:80"
