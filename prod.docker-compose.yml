@@ -7,6 +7,8 @@ services:
       restart: always
     frontend:
       restart: always
+      volumes:
+        - ./frontend/dist:/var/www/dist
       command: npm run build
     nginx:
       build:
