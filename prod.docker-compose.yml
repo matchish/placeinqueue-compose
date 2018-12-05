@@ -7,7 +7,7 @@ services:
       restart: always
     frontend:
       restart: always
-      command: command: npm run build
+      command: npm run build
     nginx:
       build:
         context: ./nginx
