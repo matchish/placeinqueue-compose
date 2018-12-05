@@ -1,9 +1,7 @@
 #!/bin/bash
+docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git --user $(id -u):$(id -g) alpine/git clone https://github.com/matchish/placeinqueue.git frontend
+docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git --user $(id -u):$(id -g) alpine/git clone https://github.com/matchish/placeinqueue-api.git api
+docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git --user $(id -u):$(id -g) alpine/git clone https://github.com/matchish/placeinqueue-api.git browser
 
-git clone https://github.com/matchish/placeinqueue.git frontend
-git clone https://github.com/matchish/placeinqueue-api.git api
-git clone https://github.com/matchish/placeinqueue-api.git lambda
-
-docker-compose exec serverless deploy
-docker-compose exec api npm install && npm migrate
-docker-compose up -d mariadb api frontend
+docker-compose up -d mariadb api frontend browser
+docker-compose exec api npm migrate
