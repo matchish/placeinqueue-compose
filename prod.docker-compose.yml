@@ -6,7 +6,6 @@ services:
     api:
       restart: always
     frontend:
-      restart: always
       volumes:
         - ./frontend/dist:/var/www/dist
       command: npm run build
@@ -20,7 +19,5 @@ services:
       ports:
         - "80:80"
         - "443:443"
-      depends_on:
-        - frontend
       networks:
         - default
