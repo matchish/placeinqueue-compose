@@ -3,5 +3,5 @@ docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git --user $(id -u):$(id -g) alp
 docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git --user $(id -u):$(id -g) alpine/git clone https://github.com/matchish/placeinqueue-api.git api
 docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git --user $(id -u):$(id -g) alpine/git clone https://github.com/matchish/placeinqueue-api.git browser
 
-docker-compose -f docker-compose-prod.yml up -d db api
+docker-compose -f docker-compose.yml -f prod.docker-compose.yml up -d db api frontend nginx
 docker-compose exec api npm run migrate
