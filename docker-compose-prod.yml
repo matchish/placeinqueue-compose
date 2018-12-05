@@ -21,20 +21,16 @@ services:
       restart: always
       depends_on:
         - db
-      volumes:
-        - ./api:/var/www
       environment:
         - PORT=3000
         - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
         - AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
         - API_URL=${API_URL}
-
       ports:
         - 3000:3000
       command: npm start
       networks:
         - default
-
 networks:
   default:
     driver: bridge
