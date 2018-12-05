@@ -16,7 +16,7 @@ services:
           - '9000'
       restart: always
       volumes:
-        - frontend/dist:/var/www/app
+        - ./frontend/dist:/var/www/app
         - ./logs/nginx/:/var/log/nginx
       ports:
         - "80:80"
