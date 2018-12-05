@@ -21,6 +21,8 @@ services:
       restart: always
       depends_on:
         - db
+      volumes:
+        - ./api:/var/www
       environment:
         - PORT=3000
         - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -30,10 +32,27 @@ services:
         - MYSQL_HOST=${MYSQL_HOST}
         - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
         - AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
-        - API_URL=${API_URL}
+        - API_URL=http://${HOST}:3000
       ports:
         - 3000:3000
       command: npm start
+      networks:
+        - default
+    frontend:
+      build:
+        context: ./frontend
+      restart: always
+      depends_on:
+        - api
+      volumes:
+        - ./frontend:/var/www
+      environment:
+        - PORT=8080
+        - HOST=${HOST}
+        - VUE_APP_API_URL=http://${HOST}:3000
+      ports:
+        - 3000:3000
+      command: npm build
       networks:
         - default
 networks:

@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+    db:
+      restart: always
+    api:
+      restart: always
+    frontend:
+      restart: always
+      command: command: npm run build
+    nginx:
+      build:
+        context: ./nginx
+        args:
+          - 'php-fpm'
+          - '9000'
+      restart: always
+      volumes:
+        - frontend/dist:/var/www/app
+        - ./logs/nginx/:/var/log/nginx
+      ports:
+        - "80:80"
+        - "443:443"
+      depends_on:
+        - frontend
+      networks:
+        - default
