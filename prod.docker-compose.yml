@@ -14,7 +14,7 @@ services:
         context: ./nginx
       restart: always
       volumes:
-        - ./frontend/dist:/var/www
+        - ./frontend/dist:/usr/share/nginx/html:ro
         - ./logs/nginx/:/var/log/nginx
       ports:
         - "80:80"
