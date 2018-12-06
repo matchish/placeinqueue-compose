@@ -41,8 +41,7 @@ services:
         - api
       environment:
         - PORT=8080
-        - HOST=${HOST}
-        - VUE_APP_API_URL=http://${HOST}:3000
+        - HOST=localhost
       command: npm run dev
       networks:
         - default

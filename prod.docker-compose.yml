@@ -8,6 +8,8 @@ services:
     frontend:
       volumes:
         - ./frontend/dist:/var/www/dist
+      environment:
+        - VUE_APP_API_URL=${API_URL}
       command: npm run build
     nginx:
       build:
