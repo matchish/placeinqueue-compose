@@ -45,6 +45,14 @@ services:
       command: npm run dev
       networks:
         - default
+    browser:
+      build:
+        context: ./browser
+      environment:
+        - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      networks:
+        - default
 networks:
   default:
     driver: bridge
