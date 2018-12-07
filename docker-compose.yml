@@ -53,12 +53,15 @@ services:
           - SERVERLESS_VERSION=1.32.0
       environment:
         - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-        - AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
-        - GRECAPTCHA_SITE_KEY=${AWS_ACCESS_KEY_ID}
-        - ANTICAPTCHA_KEY=${AWS_ACCESS_KEY_ID}
-        - RUCAPTCHA_KEY=${AWS_ACCESS_KEY_ID}
-        - SQS_ARN=${AWS_ACCESS_KEY_ID}
+        - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+        - GRECAPTCHA_SITE_KEY=${GRECAPTCHA_SITE_KEY}
+        - ANTICAPTCHA_KEY=${ANTICAPTCHA_KEY}
+        - RUCAPTCHA_KEY=${RUCAPTCHA_KEY}
+        - SQS_ARN=${SQS_ARN}
         - SLS_DEBUG=*
+      volumes:
+        - "./browser:/usr/src/myserverless"
+      working_dir: "/usr/src/myserverless"
       networks:
         - default
 networks:
