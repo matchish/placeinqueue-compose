@@ -29,6 +29,7 @@ services:
         - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
         - AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
         - API_URL=${API_URL}
+        - SQS_URL=${SQS_URL}
         - MAX_PLACES=${MAX_PLACES}
       ports:
         - 3000:3000
