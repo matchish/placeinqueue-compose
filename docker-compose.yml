@@ -49,10 +49,16 @@ services:
     browser:
       build:
         context: ./browser
+        args:
+          - SERVERLESS_VERSION=1.32.0
       environment:
         - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
         - AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
-      command: serverless deploy
+        - GRECAPTCHA_SITE_KEY=${AWS_ACCESS_KEY_ID}
+        - ANTICAPTCHA_KEY=${AWS_ACCESS_KEY_ID}
+        - RUCAPTCHA_KEY=${AWS_ACCESS_KEY_ID}
+        - SQS_ARN=${AWS_ACCESS_KEY_ID}
+        - SLS_DEBUG=*
       networks:
         - default
 networks:
