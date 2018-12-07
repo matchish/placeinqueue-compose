@@ -59,9 +59,6 @@ services:
         - RUCAPTCHA_KEY=${RUCAPTCHA_KEY}
         - SQS_ARN=${SQS_ARN}
         - SLS_DEBUG=*
-      volumes:
-        - "./browser:/usr/src/myserverless"
-      working_dir: "/usr/src/myserverless"
       networks:
         - default
 networks:
