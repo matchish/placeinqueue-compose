@@ -59,6 +59,8 @@ services:
         - ANTICAPTCHA_KEY=${ANTICAPTCHA_KEY}
         - RUCAPTCHA_KEY=${RUCAPTCHA_KEY}
         - SQS_ARN=${SQS_ARN}
+        - AWS_LAMBDA_MEMORY=${AWS_LAMBDA_MEMORY}
+        - AWS_LAMBDA_TIMEOUT=${AWS_LAMBDA_TIMEOUT}
         - SLS_DEBUG=*
       networks:
         - default
