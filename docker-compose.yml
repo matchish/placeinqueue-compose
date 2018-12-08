@@ -29,7 +29,7 @@ services:
         - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
         - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
         - API_URL=${API_URL}
-        - SQS_URL=${SQS_URL}
+        - AWS_SQS_URL=${AWS_SQS_URL}
         - MAX_PLACES=${MAX_PLACES}
       ports:
         - 3000:3000
@@ -58,7 +58,7 @@ services:
         - GRECAPTCHA_SITE_KEY=${GRECAPTCHA_SITE_KEY}
         - ANTICAPTCHA_KEY=${ANTICAPTCHA_KEY}
         - RUCAPTCHA_KEY=${RUCAPTCHA_KEY}
-        - SQS_ARN=${SQS_ARN}
+        - AWS_SQS_ARN=${AWS_SQS_ARN}
         - AWS_LAMBDA_MEMORY=${AWS_LAMBDA_MEMORY}
         - AWS_LAMBDA_TIMEOUT=${AWS_LAMBDA_TIMEOUT}
         - SLS_DEBUG=*
