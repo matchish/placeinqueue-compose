@@ -15,7 +15,7 @@ services:
         context: ./nginx
       restart: always
       volumes:
-        - ./frontend/dist:/usr/share/nginx/html:ro
+        - ./frontend/dist:/usr/share/nginx/html:rw
         - ./target-mock:/usr/share/nginx/html/mock:ro
         - ./logs/nginx/:/var/log/nginx
       ports:
