@@ -31,6 +31,7 @@ services:
         - API_URL=${API_URL}
         - AWS_SQS_URL=${AWS_SQS_URL}
         - MAX_PLACES=${MAX_PLACES}
+        - BROWSER_SHUTDOWN_WAIT=${BROWSER_SHUTDOWN_WAIT}
       ports:
         - 3000:3000
       command: npm start
