@@ -8,6 +8,6 @@ mkdir frontend/dist
 chown 1000:1000 frontend/dist
 
 docker-compose -f docker-compose.yml -f prod.docker-compose.yml up -d db api nginx
-docker-compose -f docker-compose.yml -f prod.docker-compose.yml run frontend npm run build
-docker-compose -f docker-compose.yml -f prod.docker-compose.yml run browser deploy
+docker-compose -f docker-compose.yml -f prod.docker-compose.yml run --rm frontend npm run build
+docker-compose -f docker-compose.yml -f prod.docker-compose.yml run --rm browser deploy
 docker-compose exec api npm run migrate
