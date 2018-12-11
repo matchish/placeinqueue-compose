@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>queue</title>
+</head>
+<body>
+<h2>Your queue id is <span id="queue-id"></span></h2>
+<p>Users ahead of you <span id="ahead-of-you"></span></p>
+<script src="http://chancejs.com/chance.min.js"></script>
+<script>
+    window.queueViewModel = {
+        id: undefined,
+        hasQueueId: function () {
+            return this.id !== undefined
+        },
+        ticket: {
+            numberInQueue: undefined,
+            usersInLineAheadOfYou: function () {
+                return this.numberInQueue
+            }
+        },
+        getQueueId: function () {
+            return this.id
+        },
+        initialWindowLocation: function () {
+            return window.location.href
+        },
+        run: function () {
+            var chance = new Chance();
+            this.ticket.numberInQueue = chance.integer({ min: 1, max: 500 })
+            this.id = chance.guid()
+            document.getElementById("queue-id").innerHTML = this.id
+            document.getElementById("ahead-of-you").innerHTML = this.ticket.numberInQueue
+        }
+    }
+    window.queueViewModel.run()
+</script>
+</body>
+</html>
