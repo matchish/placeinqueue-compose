@@ -33,19 +33,13 @@ services:
         - MAX_PLACES=${MAX_PLACES}
         - BROWSER_SHUTDOWN_WAIT=${BROWSER_SHUTDOWN_WAIT}
       ports:
-        - 3000:3000
+        - "3000:3000"
       command: npm start
       networks:
         - default
     frontend:
       build:
         context: ./frontend
-      depends_on:
-        - api
-      environment:
-        - PORT=8080
-        - HOST=localhost
-      command: npm run dev
       networks:
         - default
     browser:

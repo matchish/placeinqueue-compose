@@ -1,60 +1,20 @@
 version: '3'
 
 services:
-    db:
-      build:
-        context: ./mariadb
-      restart: always
-      volumes:
-          - "./.data/db:/var/lib/mysql"
-          - "./logs/mariadb:/var/log/mysql"
+    frontend:
       environment:
-        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-        - MYSQL_DATABASE=${MYSQL_DATABASE}
-        - MYSQL_USER=${MYSQL_USER}
-        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        - PORT=8080
+        - HOST=0.0.0.0
+        - VUE_APP_API_URL=${API_URL}
+      volumes:
+        - ./frontend:/var/www
+      ports:
+        - "8080:8080"
       networks:
         - default
     api:
-      build:
-        context: ./api
-      restart: always
-      depends_on:
-        - db
       volumes:
         - ./api:/var/www
-      environment:
-        - PORT=3000
-        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-        - MYSQL_DATABASE=${MYSQL_DATABASE}
-        - MYSQL_USER=${MYSQL_USER}
-        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-        - MYSQL_HOST=${MYSQL_HOST}
-        - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-        - AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
-        - API_URL=http://${HOST}:3000
-      ports:
-        - 3000:3000
-      command: npm start
-      networks:
-        - default
-    frontend:
-      build:
-        context: ./frontend
-      restart: always
-      depends_on:
-        - api
-      volumes:
-        - ./frontend:/var/www
-      environment:
-        - PORT=8080
-        - HOST=${HOST}
-        - VUE_APP_API_URL=http://${HOST}:3000
-      ports:
-        - 3000:3000
-      command: npm build
-      networks:
-        - default
 networks:
   default:
     driver: bridge
