@@ -1,19 +1,6 @@
 version: '3'
 
 services:
-    db:
-      build:
-        context: ./mariadb
-      volumes:
-          - "./.data/db:/var/lib/mysql"
-          - "./logs/mariadb:/var/log/mysql"
-      environment:
-        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-        - MYSQL_DATABASE=${MYSQL_DATABASE}
-        - MYSQL_USER=${MYSQL_USER}
-        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      networks:
-        - default
     api:
       build:
         context: ./api
@@ -32,6 +19,8 @@ services:
         - AWS_SQS_URL=${AWS_SQS_URL}
         - MAX_PLACES=${MAX_PLACES}
         - BROWSER_SHUTDOWN_WAIT=${BROWSER_SHUTDOWN_WAIT}
+        - AWS_REGION=${AWS_REGION}
+        - AWS_DYNAMODB_ENDPOINT=${AWS_DYNAMODB_ENDPOINT}
       ports:
         - "3000:3000"
       command: npm start
@@ -57,6 +46,8 @@ services:
         - AWS_LAMBDA_MEMORY=${AWS_LAMBDA_MEMORY}
         - AWS_LAMBDA_TIMEOUT=${AWS_LAMBDA_TIMEOUT}
         - SLS_DEBUG=*
+        - AWS_REGION=${AWS_REGION}
+        - AWS_DYNAMODB_ENDPOINT=${AWS_DYNAMODB_ENDPOINT}
       networks:
         - default
 networks:
