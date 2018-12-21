@@ -4,8 +4,6 @@ services:
     api:
       build:
         context: ./api
-      depends_on:
-        - db
       environment:
         - PORT=3000
         - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
