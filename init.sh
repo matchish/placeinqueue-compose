@@ -7,7 +7,7 @@ docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git --user $(id -u):$(id -g) alp
 mkdir frontend/dist
 chown 1000:1000 frontend/dist
 
-docker-compose -f docker-compose.yml -f prod.docker-compose.yml up -d db api nginx
+docker-compose -f docker-compose.yml -f prod.docker-compose.yml up -d api nginx
 docker-compose -f docker-compose.yml -f prod.docker-compose.yml run --rm frontend npm run build
 docker-compose -f docker-compose.yml -f prod.docker-compose.yml run --rm browser deploy
 docker-compose exec api npm run migrate
