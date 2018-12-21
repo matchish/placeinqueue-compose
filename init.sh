@@ -5,7 +5,7 @@ docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git --user $(id -u):$(id -g) alp
 
 # TODO: remove hack
 mkdir frontend/dist
-chown 1000:1000 frontend/dist
+sudo chown 1000:1000 frontend/dist
 
 docker-compose -f docker-compose.yml -f prod.docker-compose.yml up -d api nginx
 docker-compose -f docker-compose.yml -f prod.docker-compose.yml run --rm frontend npm run build
