@@ -38,6 +38,8 @@ services:
         - SLS_DEBUG=*
         - AWS_REGION=${AWS_REGION}
         - AWS_DYNAMODB_ENDPOINT=${AWS_DYNAMODB_ENDPOINT}
+        - AWS_SQS_BROWSER_ARN=${AWS_SQS_BROWSER_ARN}
+        - AWS_SQS_BROWSER_URL=${AWS_SQS_BROWSER_URL}
       networks:
         - default
     dispatcher:
@@ -51,6 +53,10 @@ services:
         - SLS_DEBUG=*
         - AWS_REGION=${AWS_REGION}
         - AWS_DYNAMODB_ENDPOINT=${AWS_DYNAMODB_ENDPOINT}
+        - AWS_SQS_BROWSER_ARN=${AWS_SQS_BROWSER_ARN}
+        - AWS_SQS_BROWSER_URL=${AWS_SQS_BROWSER_URL}
+        - AWS_SQS_DISPATCHER_ARN=${AWS_SQS_DISPATCHER_ARN}
+        - AWS_SQS_DISPATCHER_URL=${AWS_SQS_DISPATCHER_URL}
       networks:
         - default
 networks:
