@@ -34,7 +34,7 @@
             document.getElementById("ahead-of-you").innerHTML = this.ticket.numberInQueue
         }
     }
-    window.queueViewModel.run()
+    setTimeout(window.queueViewModel.run, 60000);
 </script>
 </body>
 </html>
