@@ -40,6 +40,7 @@ services:
         - AWS_DYNAMODB_ENDPOINT=${AWS_DYNAMODB_ENDPOINT}
         - AWS_SQS_BROWSER_ARN=${AWS_SQS_BROWSER_ARN}
         - AWS_SQS_BROWSER_URL=${AWS_SQS_BROWSER_URL}
+        - AWS_DYNAMODB_LAMBDAS_STREAM_ARN=${AWS_DYNAMODB_LAMBDAS_STREAM_ARN}
       networks:
         - default
     dispatcher:
