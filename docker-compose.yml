@@ -58,6 +58,7 @@ services:
         - AWS_SQS_BROWSER_URL=${AWS_SQS_BROWSER_URL}
         - AWS_SQS_DISPATCHER_ARN=${AWS_SQS_DISPATCHER_ARN}
         - AWS_SQS_DISPATCHER_URL=${AWS_SQS_DISPATCHER_URL}
+        - MAX_PLACES=${MAX_PLACES}
       networks:
         - default
 networks:
