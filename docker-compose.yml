@@ -41,6 +41,7 @@ services:
         - AWS_SQS_BROWSER_ARN=${AWS_SQS_BROWSER_ARN}
         - AWS_SQS_BROWSER_URL=${AWS_SQS_BROWSER_URL}
         - AWS_DYNAMODB_LAMBDAS_STREAM_ARN=${AWS_DYNAMODB_LAMBDAS_STREAM_ARN}
+        - AWS_SQS_BROWSER_BATCH=${AWS_SQS_BROWSER_BATCH}
       networks:
         - default
     dispatcher:
@@ -59,7 +60,6 @@ services:
         - AWS_SQS_DISPATCHER_ARN=${AWS_SQS_DISPATCHER_ARN}
         - AWS_SQS_DISPATCHER_URL=${AWS_SQS_DISPATCHER_URL}
         - MAX_PLACES=${MAX_PLACES}
-        - AWS_SQS_BROWSER_BATCH=${AWS_SQS_BROWSER_BATCH}
       networks:
         - default
 networks:
