@@ -13,8 +13,8 @@ services:
         context: ./nginx
       restart: always
       volumes:
-        - ./frontend/dist:/usr/share/nginx/html:rw
-        - ./target-mock:/usr/share/nginx/html/mock:ro
+        - ./frontend/dist:/usr/share/nginx/html
+        - ./target-mock:/usr/share/nginx/html/mock
         - ./logs/nginx/:/var/log/nginx
       ports:
         - "80:80"
